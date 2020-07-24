@@ -12,3 +12,12 @@ double r_map               = 50.    ; // mm  <--- To fix later!!!
 
 int Nsum = 100000 ;
 int Nphi =   10000 ;
+
+
+double c_time[100];  // time-stamps for induced charge map
+double i_time[100];  // time-stamps for current map (in the center btw time-stamps for charge)
+
+// first index = map size
+// MUST FIT r_map/step_size
+double  charge[500][100];
+double current[500][100];
