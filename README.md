@@ -23,4 +23,6 @@ python3 -m http.server 8000
  2. Define pad numbering function `get_pad_number()`
  3. Create a map of induced charge on rings with **step_size** width.
   Electron is mowing perpendicular to anode at **r=0**.
- 
+ 4. Calculate induced charge and current with defined anode
+  structure for an electron in point **(x,y)** using an overlap
+  of the map and anodes.

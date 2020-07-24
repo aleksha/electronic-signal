@@ -15,7 +15,15 @@ int get_pad_number_Rings(double x, double y){
     if( l> 90 && l<=130) return  3;
     if( l> 50 && l<= 90) return  2;
     if( l> 10 && l<= 50) return  1;
-    if( l<= 10)          return  0;
+    if( l<=10)           return  0;
 
     return -1;
+}
+
+int get_pad_number(double x, double y){
+// This functions returns pad number from a
+// coordinate on the anode (x,y)-plane.
+// You can use per-defined (in AnodeLib) ones.
+
+    return get_pad_number_Rings(x,y);
 }
