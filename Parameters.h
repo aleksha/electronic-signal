@@ -1,5 +1,5 @@
 #include "TMath.h"
-
+const int N_ANODES = 9;
 double pi = TMath::Pi();
 
 
@@ -21,3 +21,8 @@ double i_time[100];  // time-stamps for current map (in the center btw time-stam
 // MUST FIT r_map/step_size
 double  charge[500][100];
 double current[500][100];
+
+double anode_area_of_overlap[N_ANODES];
+
+long long int Nmc=1000000000;
+double anode_area_mc_estimation[N_ANODES];
