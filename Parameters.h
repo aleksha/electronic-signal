@@ -1,16 +1,16 @@
 #include "TMath.h"
 const int N_ANODES = 9;
-const int N_R      = 500;
+const int N_R      = 5000;
 const int N_TIME   = 200;
 double pi = TMath::Pi();
 
 
 double grid_anode_distance = 10.    ; // mm     ; Grid-Anode distance
 double drift_velocity      = 0.0075 ; // mm/ns  ; Dirift velosity
-double step_size           = 0.1    ; // mm     ; step size for calculation of induced charge
 double channel_width       = 40     ; // ns     ; Flash ADC channel width
 
-double r_map               = 50.    ; // mm  <--- To fix later!!!
+double r_map     = 50.  ; // mm
+double step_size = 0.01 ; // mm
 
 int Nsum = 100000 ;
 int Nphi =   10000 ;
