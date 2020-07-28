@@ -4,7 +4,7 @@ const int N_R      = 5000;
 const int N_TIME   = 200;
 double pi = TMath::Pi();
 
-bool read_from_db = false ;
+bool read_from_db = true ;
 
 double grid_anode_distance = 10.    ; // mm     ; Grid-Anode distance
 double drift_velocity      = 0.0075 ; // mm/ns  ; Dirift velosity

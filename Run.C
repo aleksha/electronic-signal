@@ -31,7 +31,7 @@ int Run(){
   //FullArea();
   // Area(0,51);
 
-  ChargeCurrent( 0, 0, Nch );
+  ChargeCurrent( 0, 155, Nch );
   DrawAnodes( Nch );
 
   gSystem->Exit(0);

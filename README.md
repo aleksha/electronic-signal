@@ -18,7 +18,7 @@ python3 -m http.server 8000
 
 **Important:** so far the calculation for electrons, which are close-to-anode
 (**low h**) are wrong, due to granularity problem. This problem can be 
-walk-arounded with **step_size=0.01 mm**.
+walk-arounded with **step_size=0.01 mm**. Small irregularity still exists!
 
 
 
