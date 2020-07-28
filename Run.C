@@ -17,8 +17,16 @@
 
 int Run(){
 
-  int Nch = MapR();
-  DrawMapR( Nch , 0 );
+  int Nch;
+  if( read_from_db ){
+    Nch =0;
+    Nch = ReadMapR();
+  }
+  else{
+    Nch = MapR();
+    DrawMapR( Nch , 0 );
+    WriteMapR( Nch );
+  }
 
   //FullArea();
   // Area(0,51);

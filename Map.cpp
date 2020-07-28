@@ -51,6 +51,65 @@ int MapR(){
 
 }
 
+void WriteMapR(int Nch){
+  ofstream file_charge;
+  file_charge.open ("CHARGE_MapR.txt");
+  file_charge << Nch                  << "\n";
+  file_charge << r_map                << "\n";
+  file_charge << step_size            << "\n";
+  file_charge << channel_width        << "\n";
+  file_charge << grid_anode_distance  << "\n";
+  file_charge << drift_velocity       << "\n";
+
+  for(int bin=0;bin<Nch;bin++){
+    file_charge << c_time[bin];
+    for(int rbin=0;rbin<N_R;rbin++){
+      file_charge << " " << charge[rbin][bin] ;
+    }
+    file_charge << "\n";
+  }
+  file_charge.close();
+}
+
+int ReadMapR(){
+
+  std::ifstream file_charge("CHARGE_MapR.txt" , std::ios::in);
+  int    Nch                   ; file_charge >> Nch ;
+  double f_r_map               ; file_charge >> f_r_map               ;
+  double f_step_size           ; file_charge >> f_step_size           ;
+  double f_channel_width       ; file_charge >> f_channel_width       ;
+  double f_grid_anode_distance ; file_charge >> f_grid_anode_distance ;
+  double f_drift_velocity      ; file_charge >> f_drift_velocity      ;
+
+  bool AbortIt = false;
+  if (f_r_map != r_map) AbortIt = true ;
+  if (f_step_size != step_size) AbortIt = true ;
+  if (f_channel_width != channel_width) AbortIt = true ;
+  if (f_grid_anode_distance != grid_anode_distance) AbortIt = true ;
+  if (f_drift_velocity != drift_velocity) AbortIt = true ;
+  if( AbortIt ){
+    std::cout << "ABORTED: Parameters in CHARGE_MapR.txt DON'T FIT ones in Parameters.h\n";
+    gSystem->Exit(1);
+  }
+
+  for(int bin=0;bin<Nch;bin++){
+    file_charge >> c_time[bin];
+    for(int rbin=0;rbin<N_R;rbin++){
+      file_charge >> charge[rbin][bin] ;
+    }
+  }
+  file_charge.close();
+
+  for(int bin=0;bin<Nch-1;bin++){
+    i_time[bin] = 0.5*(c_time[bin]+c_time[bin+1]);
+    for(int rbin=0;rbin<N_R;rbin++){
+      current[rbin][bin] = (charge[rbin][bin+1] - charge[rbin][bin]) / channel_width;
+    }
+  }
+
+  return Nch;
+}
+
 void DrawMapR(int Nch, int to_draw=0){
 
   TGraph* gr = new TGraph(Nch  , c_time, charge [ to_draw ] );

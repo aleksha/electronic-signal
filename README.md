@@ -9,6 +9,8 @@ The code is tested with CERN ROOT v6.22. Run it using command:
 root -b Run.C+
 ```
 
+It also saves a map into **CHARGE_MapR.txt**.
+
 To watch figures on a remote machine I use simple Python3 web-server
 ```bash
 python3 -m http.server 8000
