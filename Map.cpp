@@ -3,7 +3,9 @@
 double sigma(double h, double r){
   double sigma = 0.;
   double term = 1.;
-  for(int n=1;n<Nsum;n++){
+  int k=Nsum;
+  if(h<0.2) k = 10*Nsum;
+  for(int n=1;n<k;n++){
     term   = 1.;
     term  *= TMath::BesselK0(n*pi*r/grid_anode_distance)*n ;
     term  *= TMath::Sin     (n*pi*h/grid_anode_distance);
@@ -24,7 +26,8 @@ int MapR(){
   int    Nr;
 
   for(double h=10.; h>0 ; h-=drift_velocity*channel_width ){
-    std::cout << "\t Channel=" << Nch << "   Time=" << current_time << std::endl;
+    std::cout << "\t Channel=" << Nch << "   Time=" << current_time
+              << "   h=" << h << std::endl;
     Nr=0;
     for(double r=step_size*0.5; r<r_map; r+=step_size ){
       charge[Nr][Nch] = sigma(h,r);

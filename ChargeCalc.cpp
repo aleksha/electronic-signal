@@ -10,10 +10,10 @@ void ChargeCurrent(double x, double y, int Nch){
     for(int jj=0;jj<100;jj++){
       anode_xy_charge [a][jj]=0.;
       anode_xy_current[a][jj]=0.;
-      for(int ii=0;ii<3500;ii++){
-        anode_charge [a][ii][jj]=0.;
-        anode_current[a][ii][jj]=0.;
-      }
+//      for(int ii=0;ii<3500;ii++){
+//        anode_charge [a][ii][jj]=0.;
+//        anode_current[a][ii][jj]=0.;
+//      }
     }
   }
 
@@ -62,6 +62,7 @@ void DrawAnodes( int Nch ){
   }
 
   canv->Print("TEMP3.png");
+  canv->Print("TEMP3.C");
 
   for(int a=0;a<N_ANODES;a++){
     gc[a] = new TGraph(Nch-1, i_time, anode_xy_current[a] );
@@ -74,6 +75,7 @@ void DrawAnodes( int Nch ){
   }
 
   canv->Print("TEMP4.png");
+  canv->Print("TEMP4.C");
 
   canv->Close();
 }

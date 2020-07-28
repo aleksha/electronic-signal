@@ -18,12 +18,12 @@
 int Run(){
 
   int Nch = MapR();
-  //DrawMapR( Nch , 5 );
+  DrawMapR( Nch , 0 );
 
   //FullArea();
   // Area(0,51);
 
-  ChargeCurrent( 0, 15, Nch );
+  ChargeCurrent( 0, 0, Nch );
   DrawAnodes( Nch );
 
   gSystem->Exit(0);

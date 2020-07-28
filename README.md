@@ -14,6 +14,9 @@ To watch figures on a remote machine I use simple Python3 web-server
 python3 -m http.server 8000
 ```
 
+**Important:** so far the calculation for electrons, which are close-to-anode
+(**low h**) are wrong, due to granularity problem. **To be fixed!!!**
+
 ## Dependencies
 
   * [CERN ROOT](https://root.cern.ch/)
