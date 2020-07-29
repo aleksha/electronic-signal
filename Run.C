@@ -15,6 +15,9 @@
 #include "AreaCalc.cpp"
 #include "ChargeCalc.cpp"
 
+double x2check = 12.;
+double y2check = 18.;
+
 int Run(){
 
   int Nch;
@@ -31,7 +34,7 @@ int Run(){
   //FullArea();
   // Area(0,51);
 
-  ChargeCurrent( 96, 0, Nch );
+  ChargeCurrent( x2check, y2check, Nch );
   std::cout << "STATUS : Anode " << GetFiredAnode(Nch) << " is fired\n";
   RescaleAnodeCurrents( Nch );
   DrawAnodes( Nch );
