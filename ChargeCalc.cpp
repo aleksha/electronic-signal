@@ -1,13 +1,6 @@
-void ChargeCurrent(double x, double y, int Nch){
-
-  std::cout << "STATUS : Calculating charge with Map for each anode\n";
-  std::cout << "       : Nch=" << Nch << "  x=" << x << "  y=" << y << "\n";
-  int num;
-  double d_phi = 2.*pi/ float(Nphi);
-  double dC;
-
+void ClearAnodes(){
   for(int a=0; a<N_ANODES;a++){
-    for(int jj=0;jj<100;jj++){
+    for(int jj=0;jj<N_TIME;jj++){
       anode_xy_charge [a][jj]=0.;
       anode_xy_current[a][jj]=0.;
 //      for(int ii=0;ii<3500;ii++){
@@ -17,7 +10,18 @@ void ChargeCurrent(double x, double y, int Nch){
     }
   }
 
-  std::cout << "       : Charge and currents are set to zero for all anodes\n";
+  std::cout << "STATUS : Charge and currents are set to zero for all anodes\n";
+}
+
+void ChargeCurrent(double x, double y, int Nch){
+
+  std::cout << "STATUS : Calculating charge with Map for each anode\n";
+  std::cout << "       : Nch=" << Nch << "  x=" << x << "  y=" << y << "\n";
+  int num;
+  double d_phi = 2.*pi/ float(Nphi);
+  double dC;
+
+  ClearAnodes();
 
   int Nr   = 0;
   for(int tt=0;tt<Nch;tt++){
