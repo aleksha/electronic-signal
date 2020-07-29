@@ -46,6 +46,37 @@ void ChargeCurrent(double x, double y, int Nch){
 
 }
 
+int GetFiredAnode(int Nch){
+  double current_integral[N_ANODES];
+  for(int a=0; a<N_ANODES;a++)
+    current_integral[a]=0;
+
+  for(int a=0; a<N_ANODES;a++){
+    for(int jj=0;jj<Nch-1;jj++){
+      current_integral[a] += anode_xy_current[a][jj];
+    }
+  }
+
+  double max_integral=0;
+  int fired_anode=-1;
+  for(int a=0; a<N_ANODES;a++){
+    if(current_integral[a]>max_integral){
+      max_integral = current_integral[a];
+      fired_anode = a;
+    }
+  }
+  return fired_anode;
+}
+
+/*
+void RescaleCurrent(){
+  for(int a=0; a<N_ANODES;a++){
+    for(int jj=0;jj<N_TIME;jj++){
+      anode_xy_current[a][jj]=0.;
+    }
+  }
+}
+*/
 
 void DrawAnodes( int Nch ){
 
