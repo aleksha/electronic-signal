@@ -68,15 +68,23 @@ int GetFiredAnode(int Nch){
   return fired_anode;
 }
 
-/*
-void RescaleCurrent(){
-  for(int a=0; a<N_ANODES;a++){
-    for(int jj=0;jj<N_TIME;jj++){
-      anode_xy_current[a][jj]=0.;
+
+void RescaleAnodeCurrents(int Nch){
+  int fired = GetFiredAnode( Nch );
+  if(fired>=0){
+    double scaling_factor = 0;
+    for(int jj=0;jj<N_TIME;jj++)
+      scaling_factor += anode_xy_current[fired][jj];
+    scaling_factor = 1./scaling_factor;
+
+    for(int a=0; a<N_ANODES;a++){
+      for(int jj=0;jj<N_TIME;jj++){
+        anode_xy_current[a][jj] = anode_xy_current[a][jj]*scaling_factor;
+      }
     }
   }
 }
-*/
+
 
 void DrawAnodes( int Nch ){
 

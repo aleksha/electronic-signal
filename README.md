@@ -18,8 +18,8 @@ python3 -m http.server 8000
 
 **Important:** so far the calculation for electrons, which are close-to-anode
 (**low h**) are wrong, due to granularity problem. This problem can be 
-walk-arounded with **step_size=0.01 mm**. Small irregularity still exists!
-
+walk-arounded with **step_size=0.01 mm**. Small irregularity still exists! 
+It's visible on a current graph, but it's smal wrt. to all current values.
 
 
 ## Dependencies
@@ -34,3 +34,6 @@ walk-arounded with **step_size=0.01 mm**. Small irregularity still exists!
  4. Calculate induced charge and current with defined anode
   structure for an electron in point **(x,y)** using an overlap
   of the map and anodes.
+ 5. Find, which of anode is fired, using largest integral of current.
+ 6. Rescale currents for each of anodes with a common factor, which
+  is evaluated to set current integral for the fired anode to unity.

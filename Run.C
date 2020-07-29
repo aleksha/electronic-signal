@@ -31,8 +31,9 @@ int Run(){
   //FullArea();
   // Area(0,51);
 
-  ChargeCurrent( 0, 0, Nch );
+  ChargeCurrent( 96, 0, Nch );
   std::cout << "STATUS : Anode " << GetFiredAnode(Nch) << " is fired\n";
+  RescaleAnodeCurrents( Nch );
   DrawAnodes( Nch );
 
   gSystem->Exit(0);
