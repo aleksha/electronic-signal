@@ -29,18 +29,11 @@ It's visible on a current graph, but it's small wrt. to all current values.
 
 ## How it works
 
-  1. Define TPC, readout and generator configurations in `Parameters.h`
+ 1. Define TPC, readout and generator configurations in `Parameters.h`
+ 2. Define pad numbering function `get_pad_number()`
+ 3. Create a map of induced charge on rings with **step_size** width. Electron is mowing perpendicular to anode at **r=0**.
+ 4. Calculate induced charge and current with defined anode structure for an electron in point **(x,y)** using an overlap of the map and anodes.
+ 5. Find which of anode is fired, using the largest integral of current.
+ 6. Rescale currents for each of anodes with a common factor, which is evaluated to set the current integral for the fired anode to unity.
 
-  2. Define pad numbering function `get_pad_number()`
 
-  3. Create a map of induced charge on rings with **step_size** width.
-    Electron is mowing perpendicular to anode at **r=0**.
-
-  4. Calculate induced charge and current with defined anode
-    structure for an electron in point **(x,y)** using an overlap
-    of the map and anodes.
-
-  5. Find which of anode is fired, using the largest integral of current.
-
-  6. Rescale currents for each of anodes with a common factor, which
-    is evaluated to set the current integral for the fired anode to unity.
